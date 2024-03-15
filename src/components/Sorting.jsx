@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { deleteAllTodos, deleteCompletedTodos } from "../app/Slices/todoSlice";
 
 function Sorting() {
+  //
   const dispatch = useDispatch();
   const deleteAllHandler = () => {
     dispatch(deleteAllTodos());

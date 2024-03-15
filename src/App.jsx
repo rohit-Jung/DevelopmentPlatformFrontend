@@ -2,8 +2,8 @@ import { TodoForm, TodoItem, Sorting } from "./components";
 import { useSelector } from "react-redux";
 
 function App() {
-  const todos = useSelector((state) => state.todos);
-
+  const todos = useSelector((state) => state.todos); 
+  //useSelector ? - it is also a hook by react-redux used to select items from the store
   return (
     <div className="bg-[url('https://t4.ftcdn.net/jpg/05/71/83/47/360_F_571834789_ujYbUnH190iUokdDhZq7GXeTBRgqYVwa.jpg')] bg-no-repeat bg-center bg-cover bg-opacity-5">
       <div className="bg-[url('/background.png')] bg-opacity-0 bg-cover bg-center h-screen w-full flex items-center justify-center py-10 backdrop-filter backdrop-blur-[4px]">
@@ -18,6 +18,7 @@ function App() {
             <Sorting />
           </div>
           <div className="flex flex-wrap gap-y-3 font-roboto">
+            {/* since todos is an array [in the store] we can map out each item and pass to the todoItem accordingly */}
             {todos.map((todo) => (
               <div className="w-full" key={todo.id}>
                 <TodoItem todo={todo} />
