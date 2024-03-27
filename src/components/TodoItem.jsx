@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateTodo, toggleTodo, deleteTodo } from "../app/Slices/todoSlice";
 
-function TodoItem({ todo }) { //receiving each todo as param
+function TodoItem({ todo }) {
+  //receiving each todo as param
   const [todoMsg, setTodoMsg] = useState(todo.text);
   const [isEditable, setIsEditable] = useState(false);
   const dispatch = useDispatch();
@@ -17,7 +18,8 @@ function TodoItem({ todo }) { //receiving each todo as param
 
   const handleUpdate = () => {
     dispatch(
-      updateTodo({ //passing the payload from here
+      updateTodo({
+        //passing the payload from here
         id: todo.id,
         text: todoMsg,
       })
@@ -27,7 +29,7 @@ function TodoItem({ todo }) { //receiving each todo as param
 
   return (
     <div
-      className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
+      className={`w-full flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
         todo.completed ? "bg-[#89894b]" : "bg-[#becd5d]"
       }`} //changing the tailwind according to the state of todo
     >

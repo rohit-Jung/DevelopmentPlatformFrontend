@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../app/Slices/todoSlice";
+import { addTodo, deleteAllTodos } from "../app/Slices/todoSlice";
 
 function TodoForm() {
   const [todoMsg, setTodoMsg] = useState(""); //to update the value in inputfield
@@ -19,6 +19,12 @@ function TodoForm() {
     dispatch(addTodo(todoMsg));
     setTodoMsg(""); //flushes the field
   };
+
+  const deleteAllHandler = (e) => {
+    e.preventDefault();
+    dispatch(deleteAllTodos());
+  };
+
   return (
     <div>
       <form onSubmit={formSubmitHandler} className="flex">
@@ -29,11 +35,20 @@ function TodoForm() {
           onChange={(e) => setTodoMsg(e.target.value)}
         />
         <button
-          className="rounded-r-lg px-3 py-1 bg-slate-500 text-white shrink-0"
+          className="px-3 py-1 bg-slate-800 text-white shrink-0"
           type="submit"
         >
           {" "}
-          Add Todo{" "}
+          <div className="size-6 rounded-full bg-slate-500 flex items-center justify-center text-[18px]">
+            +{" "}
+          </div>
+        </button>
+        <button
+          className="rounded-r-lg px-3 py-1 bg-red-400 text-white shrink-0"
+          onClick={deleteAllHandler}
+        >
+          {" "}
+          Delete All{" "}
         </button>
       </form>
     </div>
